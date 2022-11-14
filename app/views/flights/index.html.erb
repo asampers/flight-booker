@@ -1,4 +1,11 @@
 <h1>Flight Booker</h1>
 
 <h3>Search for Your Flights</h3>
-<%= render 'search_form' %>
+<%= render 'search_form' %> 
+
+<% unless @flights.nil? %>
+  <p> <%= @flights[0].origin_airport.location %> to <%= @flights[0].destination_airport.location %> </p>
+  <% @flights.each do |flight| %>
+    <p> Leaves at <%= flight.departure_time.strftime("%I:%M%p") %>. Lasts <%= flight.duration %> minutes.</p>
+  <% end %>  
+<% end %>  

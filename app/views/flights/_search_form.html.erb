@@ -1,16 +1,11 @@
 <%= form_with model: @flight, method: :get do |form| %>
-  <%= form.label :origin_id, 'Origin' %>
-  <%= form.select(:origin_id, @airport_cities) %>
+  <%= form.label :origin_location, 'Origin' %>
+  <%= form.select( :origin_id, @airport_cities) %>
   <%= form.label :destination_id, 'Destination' %>
-  <%= form.select(:destination_id, @airport_cities) %>
-  <%= form.label :quantity, 'Passengers' %>
-  <%= form.select(:quantity, (1..4))  %>
+  <%= form.select(:destination_id, @airport_cities) %> 
+  <%= form.label :num_tickets, 'Passengers' %>
+  <%= form.select(:num_tickets, (1..4))  %>
   <%= form.label :departure_date, 'Date' %>
   <%= form.select :departure_date, @dates %>
-  <%#= form.text_area :body %>
-  <%#= form.label :date, 'Date: ' %>
-  <%#= form.date_field :date %>
-  <%#= form.label :location, 'Location: ' %>
-  <%#= form.text_field :location %>
-  <%= form.submit 'Find Flights' %>
+  <%= form.submit 'Find Flights', name: :search %>
 <% end %>

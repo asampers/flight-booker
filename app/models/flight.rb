@@ -4,5 +4,7 @@ class Flight < ApplicationRecord
                               inverse_of: :departing_flights
   belongs_to :destination_airport, class_name: "Airport",
                               foreign_key: :destination_id,
-                              inverse_of: :arriving_flights                                                    
+                              inverse_of: :arriving_flights   
+
+  #accepts_nested_attributes_for :airport                                                                           
 end
