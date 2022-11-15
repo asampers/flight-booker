@@ -2,7 +2,7 @@ class FlightsController < ApplicationController
   # GET /flights 
   def index
     if params[:search]
-      @flights = flight_results 
+      @booking_options = flight_results 
       @tickets = params[:num_tickets]
     end  
     @airport_cities = Airport.all.map { |a| [a.location, a.id ] }

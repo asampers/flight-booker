@@ -3,12 +3,10 @@
 <h3>Search for Your Flights</h3>
 <%= render 'search_form' %> 
 
-<% if @flights.nil? %>
-  <h4> Choose flight options to see available flights. </h4>
-<% else %>
-  <h4> <%= @flights[0].selected_options %> for <%= @tickets %> passengers. </h4>
+<% if @booking_options %>
+  <h4> <%= @booking_options[0].selected_options %> for <%= @tickets %> passengers. </h4>
   <strong>Available Flights:</strong>
-  <% @flights.each do |flight| %>
-    <p> <%= flight.details %> </p>
-  <% end %> 
+  <%= render partial: 'select_booking_option_form' %>
+<% else %>
+  <h4> Choose flight options to see available flights. </h4>
 <% end %>  

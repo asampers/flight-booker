@@ -1,0 +1,9 @@
+<%= form_with url: '/bookings/new/', method: :get do |form| %>
+  <%= form.hidden_field :num_tickets, :value => params[:num_tickets] %>
+  
+  <% @booking_options.each do |flight| %>
+    <p> <%= form.radio_button :flight_id, flight.id %>
+     <%= form.label :flight_id, "#{flight.details}" %></P>    
+  <% end %> 
+  <%= form.submit "Book this flight!" %>
+<% end %>
