@@ -6,6 +6,9 @@ class Flight < ApplicationRecord
                               foreign_key: :destination_id,
                               inverse_of: :arriving_flights   
 
+  has_many :bookings
+  has_many :passengers, through: :bookings
+  
   def selected_options
     "You've selected #{origin_airport.location} to #{destination_airport.location} on #{humanize_date}"
   end
