@@ -3,6 +3,7 @@ class FlightsController < ApplicationController
   def index
     if params[:search]
       @flights = flight_results 
+      @tickets = params[:num_tickets]
     end  
     @airport_cities = Airport.all.map { |a| [a.location, a.id ] }
     @dates = Flight.all.map { |f| [f.departure_date.strftime("%m/%d/%Y")] }.uniq
