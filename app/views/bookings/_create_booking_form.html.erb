@@ -1,0 +1,12 @@
+<%= form_with model: @booking do |form| %>
+  <%= form.hidden_field :flight_id, :value => params[:flight_id] %>
+  
+  <%= form.fields_for :passengers do |pass_form| %>
+    <p> <%= pass_form.label :name, "Name: " %>
+     <%= pass_form.text_field :name %>
+     <%= pass_form.label :email, "Email: " %>
+     <%= pass_form.text_field :email %></P>     
+  <% end %> 
+ 
+  <%= form.submit "Finalize Booking" %>
+<% end %>

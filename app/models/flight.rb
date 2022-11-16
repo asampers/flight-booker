@@ -19,6 +19,17 @@ class Flight < ApplicationRecord
     "#{depart_time} departure from #{origin_airport.code} and arrive at #{arrive_time} to #{destination_airport.code}"
   end
 
+  def departure_details
+    depart_time = humanize_departure
+    depart_date = humanize_date
+    "#{depart_time} on #{depart_date} from #{origin_airport.code} (#{origin_airport.location})"
+  end
+
+  def arrival_details
+    arrive_time = humanize_arrival
+    "#{arrive_time} to #{destination_airport.code} (#{destination_airport.location})"
+  end
+
   def humanize_departure
     departure_time.strftime('%l:%M %p')
   end
