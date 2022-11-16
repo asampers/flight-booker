@@ -1,5 +1,4 @@
 class FlightsController < ApplicationController
-  # GET /flights 
   def index
     if params[:search]
       @booking_options = flight_results 
@@ -12,31 +11,6 @@ class FlightsController < ApplicationController
   def flight_results
     flights = Flight.where('origin_id = ? AND destination_id = ? AND departure_date = ?', 
           params[:origin_id], params[:destination_id], params[:departure_date])
-  end
-
-  # GET /flights/1 
-  def show
-  end
-
-  # GET /flights/new
-  def new
-    @flight = Flight.new
-  end
-
-  # GET /flights/1/edit
-  def edit
-  end
-
-  # POST /flights 
-  def create
-  end
-
-  # PATCH/PUT /flightss/1
-  def update
-  end
-
-  # DELETE /flights/1 
-  def destroy
   end
 
   private
