@@ -1,5 +1,5 @@
 <%= form_with model: @flight, method: :get do |form| %>
-  <%= form.label :origin_location, 'Origin' %>
+  <%= form.label :origin_id, 'Origin' %>
   <%= form.select( :origin_id, @airport_cities) %>
   <%= form.label :destination_id, 'Destination' %>
   <%= form.select(:destination_id, @airport_cities) %> 
