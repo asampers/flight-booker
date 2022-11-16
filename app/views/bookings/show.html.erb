@@ -1,0 +1,11 @@
+<h1>Your Flight Has Been Booked!</h1>
+
+<p> <%= pluralize(@booking.passengers.count, "Passenger") %>:</p>
+<% @booking.passengers.each do |passenger| %>
+  <p> <%= passenger.name %> </p>
+<% end %>  
+
+<%= render partial: 'summary', locals: { flight: @booking.flight   } %>
+
+
+<%= link_to "Book Another Flight", root_path %>
