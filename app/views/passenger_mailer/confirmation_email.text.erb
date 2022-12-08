@@ -1,0 +1,12 @@
+Your Flight from <%= @flight.origin_airport.location %> to <%= @flight.destination_airport.location %>
+===============================================
+
+<%= @passenger.name %>, this email confirms your recent flight booking.
+
+Flight Details:
+Departure - <%= @flight.departure_details %>
+Arrival - <%= @flight.arrival_details %>
+
+To book a new flight, just follow this link: <%= @url %>.
+
+Thanks for flying with us!
