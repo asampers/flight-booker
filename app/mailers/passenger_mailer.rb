@@ -5,10 +5,8 @@ class PassengerMailer < ApplicationMailer
     @booking = params[:booking]
     @flight = Flight.find(params[:booking][:flight_id])
     @url = root_url
-
-    @booking.passengers.each do |passenger|
-      @passenger = passenger
-      mail(to: email_address_with_name(@passenger.email, @passenger.name), subject: "Confirmation of Flight# #{@flight.id} ") 
-    end
+    @passenger = params[:passenger]
+      
+    mail(to: email_address_with_name(@passenger.email, @passenger.name), subject: "Confirmation of Flight# #{@flight.id} ") 
   end
 end

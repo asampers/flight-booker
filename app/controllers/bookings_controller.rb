@@ -12,10 +12,12 @@ class BookingsController < ApplicationController
 
     respond_to do |format|
       if @booking.save
-        PassengerMailer.with(booking: @booking).confirmation_email.deliver_later
-  
+        Passenger.where('booking_id = ?', @booking.id).each do |p|
+          PassengerMailer.with(booking: @booking, passenger: p).confirmation_email.deliver_now
+        end 
+
         format.html { redirect_to(@booking, 
-          notice: = "You've successfully booked this flight! Confirmation email sent.") }
+          notice: "You've successfully booked this flight! Confirmation email sent.") }
       else  
         format.html { render :new, status: :unprocessable_entity }
       end   
