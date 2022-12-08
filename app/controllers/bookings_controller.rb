@@ -12,8 +12,8 @@ class BookingsController < ApplicationController
 
     respond_to do |format|
       if @booking.save
-        PassengerMailer.with(booking: @booking, flight: @flight).confirmation_email.deliver_later
-
+        PassengerMailer.with(booking: @booking).confirmation_email.deliver_later
+  
         format.html { redirect_to(@booking, 
           notice: = "You've successfully booked this flight! Confirmation email sent.") }
       else  
