@@ -10,12 +10,16 @@ class BookingsController < ApplicationController
     @booking = Booking.new(booking_params)
     @flight = Flight.find(params[:booking][:flight_id])
 
-    if @booking.save
-      flash[:notice] = "You've successfully booked this flight!"
-      redirect_to @booking 
-    else  
-      render :new, status: :unprocessable_entity
-    end    
+    respond_to do |format|
+      if @booking.save
+        PassengerMailer.with(booking: @booking, flight: @flight).confirmation_email.deliver_later
+
+        format.html { redirect_to(@booking, 
+          notice: = "You've successfully booked this flight! Confirmation email sent.") }
+      else  
+        format.html { render :new, status: :unprocessable_entity }
+      end   
+    end   
   end 
 
   def show

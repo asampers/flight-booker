@@ -2,8 +2,8 @@ class PassengerMailer < ApplicationMailer
   default from: 'notification@example.com'
 
   def confirmation_email
-    @booking = Booking.find(params[:id])
-    @flight = Flight.find(params[:booking][:flight_id])
+    @booking = params[:booking]
+    @flight = params[:flight]
     @passengers = @booking.passengers
     @url = root_url
 
