@@ -1,18 +1,18 @@
 databases:
-  - name: flight-booker
-    databaseName: flight-booker
-    user: flight-booker
+  - name: flight_booker
+    databaseName: flight_booker
+    user: flight_booker
 
 services:
   - type: web
-    name: flight-booker
+    name: flight_booker
     env: ruby
     buildCommand: "./bin/render-build.sh"
     startCommand: "bundle exec puma -C config/puma.rb"
     envVars:
       - key: DATABASE_URL
         fromDatabase:
-          name: flight-booker
+          name: flight_booker_production
           property: connectionString
       - key: RAILS_MASTER_KEY
         sync: false
